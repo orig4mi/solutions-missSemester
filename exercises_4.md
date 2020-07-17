@@ -3,28 +3,28 @@
 # Lecture 4: Data Wrangling
 
 1. > Take this [short interactive regex tutorial](https://regexone.com/).
->
-Done
+   >
+   Done
 2. > Find the number of words (in `/usr/share/dict/words`) that contain at
    > least three `a`s and don't have a `'s` ending. What are the three
    > most common last two letters of those words? `sed`'s `y` command, or
    > the `tr` program, may help you with case insensitivity. How many
    > of those two-letter combinations are there? And for a challenge:
    > which combinations do not occur?
-```bash
-~$ cat /usr/share/dict/words | sed -n "/.*a.*a.*a.*[^('s)]$/p" | wc -l
-~$ cat /usr/share/dict/words | sed -n "/.*a.*a.*a.*[^('s)]$/p" | sed -E 's/^.*(\w\w)$/\1/' | sort | 
-    uniq -c | sort -nk1,1 | tail -n3
-~$ cat /usr/share/dict/words | sed -n "/.*a.*a.*a.*[^('s)]$/p" | sed -E 's/^.*(\w\w)$/\1/' | sort | 
-    uniq -c | sort -nk1,1 | wc -l
-``` 
+   ```bash
+   ~$ cat /usr/share/dict/words | sed -n "/.*a.*a.*a.*[^('s)]$/p" | wc -l
+   ~$ cat /usr/share/dict/words | sed -n "/.*a.*a.*a.*[^('s)]$/p" | sed -E 's/^.*(\w\w)$/\1/' | sort | 
+       uniq -c | sort -nk1,1 | tail -n3
+   ~$ cat /usr/share/dict/words | sed -n "/.*a.*a.*a.*[^('s)]$/p" | sed -E 's/^.*(\w\w)$/\1/' | sort | 
+       uniq -c | sort -nk1,1 | wc -l
+   ``` 
 3. > To do in-place substitution it is quite tempting to do something like
    > `sed s/REGEX/SUBSTITUTION/ input.txt > input.txt`. However this is a
    > bad idea, why? Is this particular to `sed`? Use `man sed` to find out
    > how to accomplish this.
-```bash
-~$ sed -i 's/REGEX/SUBSTITUTION/g' input.txt
-```
+   ```bash
+   ~$ sed -i 's/REGEX/SUBSTITUTION/g' input.txt
+   ```
 4. > Find your average, median, and max system boot time over the last ten
    > boots. Use `journalctl` on Linux and `log show` on macOS, and look
    > for log timestamps near the beginning and end of each boot. On Linux,
@@ -70,10 +70,10 @@ Done
    > data, try [`jq`](https://stedolan.github.io/jq/). Find the min and
    > max of one column in a single command, and the sum of the difference
    > between the two columns in another.
-```bash
-~$ curl https://ucr.fbi.gov/crime-in-the-u.s.-2016/topic-pages/tables/table-1 -o dataFBI.txt
-~$ cat dataFBI.txt | ~bin_compciv/pup 'td:nth-of-type(2) text{}' | awk 'NF' | sed 's/,//g' > column1
-~$ cat dataFBI.txt | ~bin_compciv/pup 'td:nth-of-type(4) text{}' | awk 'NF' | sed 's/,//g' > column1
-~$ st --max column1
-~$ paste column1 column2 | awk '{print $1 - $2}' | st --sum
-```
+   ```bash
+   ~$ curl https://ucr.fbi.gov/crime-in-the-u.s.-2016/topic-pages/tables/table-1 -o dataFBI.txt
+   ~$ cat dataFBI.txt | ~bin_compciv/pup 'td:nth-of-type(2) text{}' | awk 'NF' | sed 's/,//g' > column1
+   ~$ cat dataFBI.txt | ~bin_compciv/pup 'td:nth-of-type(4) text{}' | awk 'NF' | sed 's/,//g' > column1
+   ~$ st --max column1
+   ~$ paste column1 column2 | awk '{print $1 - $2}' | st --sum
+   ```

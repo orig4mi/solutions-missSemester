@@ -12,17 +12,20 @@
     > ls-files`](https://git-scm.com/docs/git-ls-files) subcommand useful.
     > A number of other very common make targets are listed
     > [here](https://www.gnu.org/software/make/manual/html_node/Standard-Targets.html#Standard-Targets).
->
-Makefile:
-```
-paper.pdf: paper.tex plot-data.png
-    pdflatex paper.tex
-plot-%.png: %.dat plot.py
-    ./plot.py -i $*.dat -o $@ 
-.PHONY: clean
-clean:
-    rm *.aux *.log
-```
+	>
+	Makefile:
+	```
+	paper.pdf: paper.tex plot-data.png
+		pdflatex paper.tex
+	
+	plot-%.png: %.dat plot.py
+		./plot.py -i $*.dat -o $@ 
+	
+	.PHONY: clean
+	
+	clean:
+		rm *.aux *.log
+	```
  2. > Take a look at the various ways to specify version requirements for
     > dependencies in [Rust's build
     > system](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html).
@@ -30,8 +33,8 @@ clean:
     > (caret, tilde, wildcard, comparison, and multiple), try to come up
     > with a use-case in which that particular kind of requirement makes
     > sense.
->
-Done
+	>
+	Done
 
 3. > Git can act as a simple CI system all by itself. In `.git/hooks`
     > inside any git repository, you will find (currently inactive) files
@@ -40,18 +43,18 @@ Done
     > that runs `make paper.pdf` and refuses the commit if the `make`
     > command fails. This should prevent any commit from having an
     > unbuildable version of the paper.
->
-```bash
-#!/usr/bin/env bash
-make paper.pdf
-if [[ $? -ne 0 ]]; then
-    echo "pre-commit hook failed"
-    make clean
-    exit 1
-fi
-make clean
-exit 0
-```
+	>
+	```bash
+	#!/usr/bin/env bash
+	make paper.pdf
+	if [[ $? -ne 0 ]]; then
+		echo "pre-commit hook failed"
+		make clean
+		exit 1
+	fi
+	make clean
+	exit 0
+	```
 
 4. > Set up a simple auto-published page using [GitHub
     > Pages](https://pages.github.com/).
@@ -60,13 +63,13 @@ exit 0
     > repository (here is [one way to do
     > it](https://github.com/marketplace/actions/shellcheck)). Check that
     > it works!
->
-Skipped
+	>
+	Skipped
 5. >  [Build your
     > own](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/building-actions)
     > GitHub action to run [`proselint`](http://proselint.com/) or
     > [`write-good`](https://github.com/btford/write-good) on all the
     > `.md` files in the repository. Enable it in your repository, and
     > check that it works by filing a pull request with a typo in it.
->
-Skipped
+	>
+	Skipped
