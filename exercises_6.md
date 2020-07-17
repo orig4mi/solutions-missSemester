@@ -64,7 +64,7 @@
    >  --oneline`.
    
    ```bash
-   ~$ git config --global alias.graph 'got log --all --graph --decorate --oneline
+   ~$ git config --global alias.graph 'git log --all --graph --decorate --oneline'
    ```
    
 1. >  You can define global ignore patterns in `~/.gitignore_global` after running
