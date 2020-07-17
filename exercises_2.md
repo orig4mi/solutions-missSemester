@@ -20,13 +20,16 @@
     > -rw-r--r--   1 user group 106M Jan 13 12:12 foo
     > drwx------+ 47 user group 1.5K Jan 12 18:08 ..
     > ```
+    
     ```bash
     ~$ ls -ltah --color
     ```
+    
 1. > Write bash functions  `marco` and `polo` that do the following.
     > Whenever you execute `marco` the current working directory should be saved in some manner, then when you execute `polo`, no matter what directory you are in, `polo` should `cd` you back to the directory where you executed `marco`.
     > For ease of debugging you can write the code in a file `marco.sh` and (re)load the definitions to your shell by executing `source marco.sh`.
     >
+    
     File `marco.sh`:
     ```bash
     marco () {
@@ -37,6 +40,7 @@
         cd $foo
     }
     ```
+    
 1. > Say you have a command that fails rarely. In order to debug it you need to capture its output but it can be time consuming to get a failure run.
     > Write a bash script that runs the following script until it fails and captures its standard output and error streams to files and prints everything at the end.
     > Bonus points if you can also report how many runs it took for the script to fail.
@@ -53,6 +57,7 @@
     > 
     > echo "Everything went according to plan"
     > ```
+    
     ```bash
     #!/usr/bin/env bash
     counter=1
@@ -67,6 +72,7 @@
         counter=$((counter+1))
     done
     ```
+    
 1. > As we covered in the lecture `find`'s `-exec` can be very powerful for performing operations over the files we are searching for.
     > However, what if we want to do something with **all** the files, like creating a zip file?
     > As you have seen so far commands will take input from both arguments and STDIN.
@@ -75,15 +81,19 @@
     > For example `ls | xargs rm` will delete the files in the current directory.
     > 
     > Your task is to write a command that recursively finds all HTML files in the folder and makes a zip with them. Note that your command should work even if the files have spaces (hint: check `-d` flag for `xargs`)
+    
     ```bash
     ~$ find . -name '*.html' | xargs -d '\n' tar -cfz out.tar.gz
     ```
+    
 1. >(Advanced) Write a command or script to recursively find the most recently modified file in a directory. More generally, can you list all files by recency?
     >
+    
     Find the most recently modified file:
     ```bash
     ~$ find . -name '*' -type f -exec ls -1lt {} + 2> /dev/null | head -1
     ```
+    
     List all files by recency:
     ```bash
     ~$ find . -name '*' -type f -exec ls -1lt {} + 
