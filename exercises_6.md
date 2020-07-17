@@ -44,7 +44,7 @@
    
    ```bash
    ~$ git filter-branch --force --index-filter \
-       "git rm --cached --ignore-unmatch testfile" --prune-empty --tag-name-filter cat -- --all
+   > "git rm --cached --ignore-unmatch testfile" --prune-empty --tag-name-filter cat -- --all
    ```
    
 1. >  Clone some repository from GitHub, and modify one of its existing files.
