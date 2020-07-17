@@ -102,12 +102,21 @@
    
 1. > Set up a method to install your dotfiles quickly (and without manual effort) on a new machine. This can be as simple as a shell script that calls `ln -s` for each file, or you could use a [specialized utility](https://dotfiles.github.io/utilities/).
    
-   Installed dotbot from the link above, and set a `dotfiles` folder as my repository.
+   Installed dotbot from the link above, and set a `dotfiles` folder as my repository:
+   ```bash
+   ~$ mkdir dotfiles
+   ~$ cd ~/dotfiles
+   ~$ git init
+   ~$ git submodule add https://github.com/anishathalye/dotbot
+   ~$ git config -f .gitmodules submodule.dotbot.ignore dirty
+   ~$ cp dotbot/tools/git-submodule/install .
+   ~$ touch install.conf.yaml
+   ```
    
 1. > Test your installation script on a fresh virtual machine.
    
    Did this on a virtual machine (Debian guest on VMware Player) after Step 5 below:
-      ```bash
+   ```bash
    ~$ git clone https://github.com/orig4mi/dotfiles.git dotfiles
    ~$ cd dotfiles
    ~$ ./install
@@ -147,8 +156,10 @@
    
    Then, I added the plugins for oh-my-zsh as git submodules:
    ```bash
-   ~$ git submodule add https://github.com/zsh-users/zsh-syntax-highlighting.git oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-   ~$ git submodule add https://github.com/zsh-users/zsh-autosuggestions oh-my-zsh/custom/plugins/zsh-autosuggestions 
+   ~$ git submodule add https://github.com/zsh-users/zsh-syntax-highlighting.git \
+   > oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+   ~$ git submodule add https://github.com/zsh-users/zsh-autosuggestions \
+   > oh-my-zsh/custom/plugins/zsh-autosuggestions 
    ```
    
    Finally, added all to git and committed:
@@ -177,7 +188,7 @@
    ```
    
 1. > Edit `.ssh/config` to have an entry as follows
-   > 
+   >
    >  ```bash
    > Host vm
    >     User username_goes_here
