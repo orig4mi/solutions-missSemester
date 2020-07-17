@@ -15,10 +15,10 @@
    
    ```bash
    ~$ cat /usr/share/dict/words | sed -n "/.*a.*a.*a.*[^('s)]$/p" | wc -l
-   ~$ cat /usr/share/dict/words | sed -n "/.*a.*a.*a.*[^('s)]$/p" | sed -E 's/^.*(\w\w)$/\1/' | sort | 
-       uniq -c | sort -nk1,1 | tail -n3
-   ~$ cat /usr/share/dict/words | sed -n "/.*a.*a.*a.*[^('s)]$/p" | sed -E 's/^.*(\w\w)$/\1/' | sort | 
-       uniq -c | sort -nk1,1 | wc -l
+   ~$ cat /usr/share/dict/words | sed -n "/.*a.*a.*a.*[^('s)]$/p" | sed -E 's/^.*(\w\w)$/\1/' | sort \
+   > | uniq -c | sort -nk1,1 | tail -n3
+   ~$ cat /usr/share/dict/words | sed -n "/.*a.*a.*a.*[^('s)]$/p" | sed -E 's/^.*(\w\w)$/\1/' | sort \ 
+   > | uniq -c | sort -nk1,1 | wc -l
    ```
    
 3. > To do in-place substitution it is quite tempting to do something like
