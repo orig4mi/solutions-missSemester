@@ -23,7 +23,18 @@
    >    done
    >    ```
 
-   Installed `shellcheck` and [ale](https://vimawesome.com/plugin/ale). The fixed script is
+   Installed `shellcheck`:    
+   ```
+   ~$ sudo apt-get install shellcheck
+   ```
+   
+   Installed [ale](https://vimawesome.com/plugin/ale):
+   ```
+   ~$ mkdir -p ~/.vim/pack/git-plugins/start
+   ~$ git clone --depth 1 https://github.com/dense-analysis/ale.git ~/.vim/pack/git-plugins/start/ale
+   ```
+   
+   The fixed script is
    ```bash
    #!/bin/sh	
    ## Example: a typical script with several problems
