@@ -1,4 +1,4 @@
-[Home](REDAME.md)
+[Home](README.md)
 
 # Lecture 7: Debugging and Profiling
 
